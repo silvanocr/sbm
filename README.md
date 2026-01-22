@@ -91,6 +91,7 @@ Veja o arquivo `.env.example` para todas as variáveis de ambiente necessárias.
 - **`CONFIGURAR_BANCO.md`** - Como configurar banco de dados
 - **`CONFIGURAR_PRISMA.md`** - Como configurar Prisma
 - **`CONFIGURAR_GITHUB_RAILWAY.md`** - Configurar GitHub e Railway
+- **`CONFIGURAR_VERCEL_PASSO_A_PASSO.md`** - Configurar Vercel (deploy)
 - **`.env.example`** - Exemplo de variáveis de ambiente
 
 ## 🛠️ Tecnologias
@@ -129,7 +130,8 @@ npm run db:status        # Ver status das migrações
 npm run deploy:check     # Verificar se está pronto para deploy
 npm run deploy:prepare   # Preparar projeto para deploy
 npm run deploy:secret    # Gerar NEXTAUTH_SECRET
-npm run github:setup      # Configurar e fazer push para GitHub
+npm run github:setup     # Configurar e fazer push para GitHub
+npm run railway:check    # Verificar e configurar Railway
 ```
 
 ## 🔗 Links Úteis

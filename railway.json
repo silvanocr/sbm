@@ -7,5 +7,6 @@
     "startCommand": "npx prisma migrate deploy && npm start",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
-  }
+  },
+  "comment": "Este arquivo é usado apenas se você quiser fazer deploy da aplicação no Railway. Para este projeto, use Railway apenas para PostgreSQL e Vercel para a aplicação Next.js."
 }

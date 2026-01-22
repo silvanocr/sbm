@@ -2,7 +2,7 @@
 
 import { useSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { FileText, Download, CheckCircle } from 'lucide-react'
 
 interface Receipt {
@@ -15,7 +15,7 @@ interface Receipt {
   createdAt: string
 }
 
-export default function ComprovantesPage() {
+function ComprovantesContent() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -108,5 +108,13 @@ export default function ComprovantesPage() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function ComprovantesPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Carregando...</div>}>
+      <ComprovantesContent />
+    </Suspense>
   )
 }

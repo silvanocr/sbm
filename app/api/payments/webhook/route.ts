@@ -45,7 +45,7 @@ export async function POST(request: Request) {
         data: {
           status: 'paid',
           paymentId: session.payment_intent as string,
-          receiptUrl: session.receipt_url || undefined,
+          receiptUrl: (session as any).receipt_url || null,
         },
       })
     } else if (type === 'order' && orderId) {
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
         data: {
           status: 'paid',
           paymentId: session.payment_intent as string,
-          receiptUrl: session.receipt_url || undefined,
+          receiptUrl: (session as any).receipt_url || null,
         },
       })
     }

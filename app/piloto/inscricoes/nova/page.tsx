@@ -2,7 +2,7 @@
 
 import { useSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -15,7 +15,7 @@ const enrollmentSchema = z.object({
 
 type EnrollmentForm = z.infer<typeof enrollmentSchema>
 
-export default function NovaInscricaoPage() {
+function NovaInscricaoContent() {
   const { data: session, status } = useSession()
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -192,5 +192,13 @@ export default function NovaInscricaoPage() {
         </div>
       </form>
     </div>
+  )
+}
+
+export default function NovaInscricaoPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Carregando...</div>}>
+      <NovaInscricaoContent />
+    </Suspense>
   )
 }
