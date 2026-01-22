@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useSession, signOut } from 'next-auth/react'
 import { Menu, X, User, LogOut } from 'lucide-react'
 import { useState } from 'react'
-import Logo from './Logo'
 
 export default function Navbar() {
   const { data: session } = useSession()
@@ -14,9 +13,6 @@ export default function Navbar() {
     <nav className="bg-brand-black text-white shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          <div className="flex-shrink-0">
-            <Logo />
-          </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
