@@ -11,21 +11,30 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  password      String
-  name          String
-  cpf           String?   @unique
-  phone         String?
-  licenseNumber String?
-  photo         String?   // URL da foto do piloto
-  role          String    @default("pilot") // "admin" ou "pilot"
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  enrollments   Enrollment[]
-  orders        Order[]
+  id                String    @id @default(cuid())
+  email             String    @unique
+  password          String
+  name              String
+  cpf               String?   @unique
+  phone             String?
+  licenseNumber     String?
+  photo             String?   // URL da foto do piloto
+  role              String    @default("pilot") // "admin" ou "pilot"
+  dateOfBirth       DateTime? // Data de nascimento
+  cep               String?   // CEP
+  address           String?   // Endereço completo
+  city              String?   // Cidade
+  state             String?   // Estado
+  healthInsurance   String?   // Plano de saúde
+  emergencyContact  String?   // Contato de emergência
+  emergencyPhone    String?   // Telefone do contato de emergência
+  bloodType         String?   // Tipo sanguíneo (A+, A-, B+, B-, AB+, AB-, O+, O-)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  enrollments       Enrollment[]
+  orders            Order[]
   eventRegistrations EventRegistration[]
-  messages      Message[]
+  messages          Message[]
 }
 
 model Enrollment {
