@@ -62,7 +62,7 @@ export default function YouTubeSection() {
           ))}
           <Link
             href="/transmissoes"
-            className="block text-center text-primary-600 hover:text-primary-700 font-semibold mt-4"
+            className="block text-center text-brand-yellow hover:text-brand-yellow-dark font-semibold mt-4"
           >
             Ver todas as transmissões →
           </Link>

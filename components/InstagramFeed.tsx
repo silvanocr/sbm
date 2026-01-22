@@ -29,7 +29,7 @@ export default function InstagramFeed() {
   return (
     <div className="bg-white rounded-lg shadow-lg p-6">
       <div className="flex items-center gap-2 mb-6">
-        <Instagram className="w-6 h-6 text-primary-600" />
+        <Instagram className="w-6 h-6 text-brand-yellow" />
         <h2 className="text-2xl font-bold">Instagram</h2>
       </div>
       {loading ? (

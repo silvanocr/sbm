@@ -97,7 +97,7 @@ function ComprovantesContent() {
                   href={receipt.receiptUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition flex items-center gap-2"
+                  className="bg-brand-yellow text-brand-black px-6 py-3 rounded-lg font-semibold hover:bg-brand-yellow-dark transition flex items-center gap-2"
                 >
                   <Download className="w-5 h-5" />
                   Baixar Comprovante

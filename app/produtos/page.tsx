@@ -63,7 +63,7 @@ export default function ProdutosPage() {
         {cart.length > 0 && (
           <button
             onClick={goToCheckout}
-            className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition flex items-center gap-2"
+            className="bg-brand-yellow text-brand-black px-6 py-3 rounded-lg font-semibold hover:bg-brand-yellow-dark transition flex items-center gap-2"
           >
             <ShoppingCart className="w-5 h-5" />
             Finalizar Compra ({cart.length})
@@ -92,7 +92,7 @@ export default function ProdutosPage() {
                 {product.description}
               </p>
               <div className="flex justify-between items-center mb-4">
-                <span className="text-2xl font-bold text-primary-600">
+                <span className="text-2xl font-bold text-brand-yellow">
                   R$ {product.price.toFixed(2).replace('.', ',')}
                 </span>
                 <span className="text-sm text-gray-500">
@@ -102,7 +102,7 @@ export default function ProdutosPage() {
               <button
                 onClick={() => addToCart(product.id)}
                 disabled={product.stock === 0}
-                className="w-full bg-primary-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-brand-yellow text-brand-black px-4 py-2 rounded-lg font-semibold hover:bg-brand-yellow-dark transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {product.stock === 0 ? 'Sem Estoque' : 'Adicionar ao Carrinho'}
               </button>

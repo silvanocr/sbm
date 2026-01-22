@@ -35,7 +35,7 @@ function CheckoutContent() {
       <div className="text-center">
         <p className="text-lg mb-4">Redirecionando para o pagamento...</p>
         {loading && (
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-yellow mx-auto"></div>
         )}
       </div>
     </div>

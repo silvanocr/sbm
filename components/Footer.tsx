@@ -60,13 +60,13 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Redes Sociais</h4>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-primary-400 transition">
+              <a href="#" className="hover:text-brand-yellow transition">
                 <Instagram className="w-6 h-6" />
               </a>
-              <a href="#" className="hover:text-primary-400 transition">
+              <a href="#" className="hover:text-brand-yellow transition">
                 <Youtube className="w-6 h-6" />
               </a>
-              <a href="#" className="hover:text-primary-400 transition">
+              <a href="#" className="hover:text-brand-yellow transition">
                 <Facebook className="w-6 h-6" />
               </a>
             </div>

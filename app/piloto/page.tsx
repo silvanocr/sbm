@@ -52,30 +52,30 @@ export default function PilotoPage() {
           href="/piloto/inscricoes"
           className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition"
         >
-          <Calendar className="w-8 h-8 text-primary-600 mb-4" />
+          <Calendar className="w-8 h-8 text-brand-yellow mb-4" />
           <h3 className="text-xl font-semibold mb-2">Minhas Inscrições</h3>
           <p className="text-gray-600 mb-2">{stats.enrollments} inscrições</p>
-          <p className="text-primary-600 font-semibold">Ver todas →</p>
+          <p className="text-brand-yellow font-semibold">Ver todas →</p>
         </Link>
 
         <Link
           href="/piloto/comprovantes"
           className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition"
         >
-          <FileText className="w-8 h-8 text-primary-600 mb-4" />
+          <FileText className="w-8 h-8 text-brand-yellow mb-4" />
           <h3 className="text-xl font-semibold mb-2">Comprovantes</h3>
           <p className="text-gray-600 mb-2">Baixar comprovantes</p>
-          <p className="text-primary-600 font-semibold">Ver todos →</p>
+          <p className="text-brand-yellow font-semibold">Ver todos →</p>
         </Link>
 
         <Link
           href="/piloto/pedidos"
           className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition"
         >
-          <ShoppingBag className="w-8 h-8 text-primary-600 mb-4" />
+          <ShoppingBag className="w-8 h-8 text-brand-yellow mb-4" />
           <h3 className="text-xl font-semibold mb-2">Meus Pedidos</h3>
           <p className="text-gray-600 mb-2">{stats.orders} pedidos</p>
-          <p className="text-primary-600 font-semibold">Ver todos →</p>
+          <p className="text-brand-yellow font-semibold">Ver todos →</p>
         </Link>
 
         <Link
@@ -94,19 +94,19 @@ export default function PilotoPage() {
         <div className="grid md:grid-cols-3 gap-4">
           <Link
             href="/piloto/inscricoes/nova?tipo=curso"
-            className="border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition text-center"
+            className="border-2 border-brand-yellow text-brand-yellow px-6 py-3 rounded-lg font-semibold hover:bg-brand-yellow hover:text-brand-black transition text-center"
           >
             Inscrever-se em Curso
           </Link>
           <Link
             href="/piloto/inscricoes/nova?tipo=trackday"
-            className="border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition text-center"
+            className="border-2 border-brand-yellow text-brand-yellow px-6 py-3 rounded-lg font-semibold hover:bg-brand-yellow hover:text-brand-black transition text-center"
           >
             Inscrever-se em Trackday
           </Link>
           <Link
             href="/piloto/inscricoes/nova?tipo=championship"
-            className="border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition text-center"
+            className="border-2 border-brand-yellow text-brand-yellow px-6 py-3 rounded-lg font-semibold hover:bg-brand-yellow hover:text-brand-black transition text-center"
           >
             Inscrever-se no Campeonato
           </Link>

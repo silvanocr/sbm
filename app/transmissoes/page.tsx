@@ -79,7 +79,7 @@ export default function TransmissoesPage() {
             href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary-600 hover:text-primary-700 font-semibold"
+            className="text-brand-yellow hover:text-brand-yellow-dark font-semibold"
           >
             Visite nosso canal no YouTube →
           </a>

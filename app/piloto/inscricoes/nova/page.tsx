@@ -128,7 +128,7 @@ function NovaInscricaoContent() {
           </label>
           <select
             {...register('type')}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
           >
             <option value="course">Curso</option>
             <option value="trackday">Trackday</option>
@@ -146,7 +146,7 @@ function NovaInscricaoContent() {
           <input
             {...register('eventName')}
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
             placeholder="Ex: Curso de Pilotagem Avançada"
           />
           {errors.eventName && (
@@ -161,14 +161,14 @@ function NovaInscricaoContent() {
           <input
             {...register('eventId')}
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
           />
         </div>
 
         <div className="bg-gray-50 p-4 rounded-lg">
           <div className="flex justify-between items-center">
             <span className="text-lg font-semibold">Valor:</span>
-            <span className="text-2xl font-bold text-primary-600">
+            <span className="text-2xl font-bold text-brand-yellow">
               R$ {price.toFixed(2).replace('.', ',')}
             </span>
           </div>
@@ -185,7 +185,7 @@ function NovaInscricaoContent() {
           <button
             type="submit"
             disabled={loading}
-            className="flex-1 px-6 py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition disabled:opacity-50"
+            className="flex-1 px-6 py-3 bg-brand-yellow text-brand-black rounded-lg font-semibold hover:bg-brand-yellow-dark transition disabled:opacity-50"
           >
             {loading ? 'Processando...' : 'Confirmar e Pagar'}
           </button>
