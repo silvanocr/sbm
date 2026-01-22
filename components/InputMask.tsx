@@ -1,38 +1,58 @@
 'use client'
 
-import { InputHTMLAttributes, forwardRef } from 'react'
+import { InputHTMLAttributes, forwardRef, useEffect, useState } from 'react'
 import { maskCPF, maskPhone, maskCEP } from '@/lib/masks'
 
-interface InputMaskProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+interface InputMaskProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> {
   mask: 'cpf' | 'phone' | 'cep'
-  onChange?: (value: string) => void
+  value?: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const InputMask = forwardRef<HTMLInputElement, InputMaskProps>(
-  ({ mask, onChange, ...props }, ref) => {
+  ({ mask, value, onChange, ...props }, ref) => {
+    const [displayValue, setDisplayValue] = useState('')
+
+    useEffect(() => {
+      if (value !== undefined) {
+        setDisplayValue(value)
+      }
+    }, [value])
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      let value = e.target.value
+      let maskedValue = e.target.value
       
       switch (mask) {
         case 'cpf':
-          value = maskCPF(value)
+          maskedValue = maskCPF(maskedValue)
           break
         case 'phone':
-          value = maskPhone(value)
+          maskedValue = maskPhone(maskedValue)
           break
         case 'cep':
-          value = maskCEP(value)
+          maskedValue = maskCEP(maskedValue)
           break
       }
       
-      e.target.value = value
-      onChange?.(value)
+      setDisplayValue(maskedValue)
+      
+      // Cria um novo evento com o valor mascarado
+      const syntheticEvent = {
+        ...e,
+        target: {
+          ...e.target,
+          value: maskedValue,
+        },
+      } as React.ChangeEvent<HTMLInputElement>
+      
+      onChange?.(syntheticEvent)
     }
 
     return (
       <input
         {...props}
         ref={ref}
+        value={displayValue}
         onChange={handleChange}
       />
     )
