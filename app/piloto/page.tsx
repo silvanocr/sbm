@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
+import Image from 'next/image'
 import { User, Calendar, DollarSign, Upload } from 'lucide-react'
 import Link from 'next/link'
 import { format } from 'date-fns'
@@ -45,11 +46,14 @@ export default async function PilotoPage() {
           <div className="bg-white rounded-lg shadow-lg p-6">
             <div className="text-center mb-6">
               {user.photo ? (
-                <img
-                  src={user.photo}
-                  alt={user.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
-                />
+                <div className="relative w-32 h-32 mx-auto mb-4">
+                  <Image
+                    src={user.photo}
+                    alt={user.name}
+                    fill
+                    className="object-cover rounded-full"
+                  />
+                </div>
               ) : (
                 <div className="w-32 h-32 rounded-full mx-auto mb-4 bg-gray-200 flex items-center justify-center">
                   <User className="w-16 h-16 text-gray-400" />

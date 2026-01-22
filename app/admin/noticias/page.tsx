@@ -1,6 +1,7 @@
 import { requireAdmin } from '@/lib/admin-auth'
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Plus, FileText } from 'lucide-react'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
@@ -30,11 +31,14 @@ export default async function AdminNoticiasPage() {
           <div key={item.id} className="bg-white rounded-lg shadow p-6">
             <div className="flex gap-6">
               {item.image && (
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-32 h-32 object-cover rounded-lg"
-                />
+                <div className="relative w-32 h-32 flex-shrink-0">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
               )}
               <div className="flex-1">
                 <div className="flex justify-between items-start mb-2">

@@ -1,6 +1,7 @@
 import { requireAdmin } from '@/lib/admin-auth'
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Eye, Edit, Trash2 } from 'lucide-react'
 
 export default async function AdminPilotosPage() {
@@ -57,11 +58,14 @@ export default async function AdminPilotosPage() {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     {pilot.photo && (
-                      <img
-                        src={pilot.photo}
-                        alt={pilot.name}
-                        className="w-10 h-10 rounded-full mr-3"
-                      />
+                      <div className="relative w-10 h-10 mr-3 flex-shrink-0">
+                        <Image
+                          src={pilot.photo}
+                          alt={pilot.name}
+                          fill
+                          className="object-cover rounded-full"
+                        />
+                      </div>
                     )}
                     <div>
                       <div className="text-sm font-medium text-gray-900">{pilot.name}</div>

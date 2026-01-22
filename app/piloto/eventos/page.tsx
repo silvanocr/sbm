@@ -3,6 +3,7 @@ import { authOptions } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
+import Image from 'next/image'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { Calendar, MapPin, DollarSign } from 'lucide-react'
@@ -37,11 +38,14 @@ export default async function EventosPage() {
         {events.map((event) => (
           <div key={event.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
             {event.image && (
-              <img
-                src={event.image}
-                alt={event.name}
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative w-full h-48">
+                <Image
+                  src={event.image}
+                  alt={event.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             )}
             <div className="p-6">
               <h3 className="text-xl font-bold mb-2">{event.name}</h3>

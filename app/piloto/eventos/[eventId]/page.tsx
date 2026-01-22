@@ -2,6 +2,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
+import Image from 'next/image'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import EventRegistrationForm from '@/components/piloto/EventRegistrationForm'
@@ -48,11 +49,14 @@ export default async function EventRegistrationPage({
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
           {event.image && (
-            <img
-              src={event.image}
-              alt={event.name}
-              className="w-full h-64 object-cover"
-            />
+            <div className="relative w-full h-64">
+              <Image
+                src={event.image}
+                alt={event.name}
+                fill
+                className="object-cover"
+              />
+            </div>
           )}
           <div className="p-8">
             <h1 className="text-3xl font-bold mb-4">{event.name}</h1>

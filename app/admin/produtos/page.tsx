@@ -27,11 +27,14 @@ export default async function AdminProdutosPage() {
         {products.map((product) => (
           <div key={product.id} className="bg-white rounded-lg shadow overflow-hidden">
             {product.image && (
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative w-full h-48">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             )}
             <div className="p-6">
               <h3 className="text-xl font-bold mb-2">{product.name}</h3>

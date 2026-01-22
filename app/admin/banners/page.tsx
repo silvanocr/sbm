@@ -1,6 +1,7 @@
 import { requireAdmin } from '@/lib/admin-auth'
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Plus, Image as ImageIcon } from 'lucide-react'
 
 export default async function AdminBannersPage() {
@@ -27,11 +28,14 @@ export default async function AdminBannersPage() {
         {banners.map((banner) => (
           <div key={banner.id} className="bg-white rounded-lg shadow overflow-hidden">
             <div className="relative">
-              <img
-                src={banner.imageUrl}
-                alt={banner.title || 'Banner'}
-                className="w-full h-48 object-cover"
-              />
+              <div className="relative w-full h-48">
+                <Image
+                  src={banner.imageUrl}
+                  alt={banner.title || 'Banner'}
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div className="absolute top-2 right-2">
                 <span className={`px-2 py-1 rounded text-xs font-semibold ${banner.active ? 'bg-green-500 text-white' : 'bg-gray-500 text-white'}`}>
                   {banner.active ? 'Ativo' : 'Inativo'}
