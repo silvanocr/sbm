@@ -3,11 +3,13 @@ import NewsSection from '@/components/NewsSection'
 import InstagramFeed from '@/components/InstagramFeed'
 import YouTubeSection from '@/components/YouTubeSection'
 import { Calendar } from 'lucide-react'
+import { unstable_noStore as noStore } from 'next/cache'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 export default async function CopaCBPage() {
+  noStore()
   let news = []
   
   // Só tenta buscar do banco se DATABASE_URL estiver disponível
