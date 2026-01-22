@@ -19,7 +19,8 @@
     "deploy:prepare": "powershell -ExecutionPolicy Bypass -File scripts/preparar-deploy.ps1",
     "deploy:secret": "powershell -ExecutionPolicy Bypass -File scripts/gerar-nextauth-secret.ps1",
     "github:setup": "powershell -ExecutionPolicy Bypass -File scripts/configurar-github.ps1",
-    "railway:check": "powershell -ExecutionPolicy Bypass -File scripts/configurar-railway.ps1"
+    "railway:check": "powershell -ExecutionPolicy Bypass -File scripts/configurar-railway.ps1",
+    "railway:deploy": "powershell -ExecutionPolicy Bypass -File scripts/executar-railway.ps1"
   },
   "dependencies": {
     "next": "^14.0.4",
