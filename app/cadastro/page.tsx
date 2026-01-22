@@ -8,7 +8,25 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { maskCPF, maskPhone, maskCEP, unmask } from '@/lib/masks'
 import { fetchCEP } from '@/lib/cep'
-import InputMask from '@/components/InputMask'
+
+// Handlers para máscaras
+const handleCPFChange = (e: React.ChangeEvent<HTMLInputElement>, onChange: (value: string) => void) => {
+  const masked = maskCPF(e.target.value)
+  e.target.value = masked
+  onChange(masked)
+}
+
+const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>, onChange: (value: string) => void) => {
+  const masked = maskPhone(e.target.value)
+  e.target.value = masked
+  onChange(masked)
+}
+
+const handleCEPChange = (e: React.ChangeEvent<HTMLInputElement>, onChange: (value: string) => void) => {
+  const masked = maskCEP(e.target.value)
+  e.target.value = masked
+  onChange(masked)
+}
 
 const registerSchema = z.object({
   // Dados básicos
@@ -184,10 +202,12 @@ export default function CadastroPage() {
                   name="cpf"
                   control={control}
                   render={({ field }) => (
-                    <InputMask
+                    <input
                       {...field}
-                      mask="cpf"
+                      type="text"
                       placeholder="000.000.000-00"
+                      maxLength={14}
+                      onChange={(e) => handleCPFChange(e, field.onChange)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
                     />
                   )}
@@ -202,10 +222,12 @@ export default function CadastroPage() {
                   name="phone"
                   control={control}
                   render={({ field }) => (
-                    <InputMask
+                    <input
                       {...field}
-                      mask="phone"
+                      type="text"
                       placeholder="(00) 00000-0000"
+                      maxLength={15}
+                      onChange={(e) => handlePhoneChange(e, field.onChange)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
                     />
                   )}
@@ -279,10 +301,12 @@ export default function CadastroPage() {
                   control={control}
                   render={({ field }) => (
                     <div className="relative">
-                      <InputMask
+                      <input
                         {...field}
-                        mask="cep"
+                        type="text"
                         placeholder="00000-000"
+                        maxLength={9}
+                        onChange={(e) => handleCEPChange(e, field.onChange)}
                         onBlur={handleCEPBlur}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
                       />
@@ -401,10 +425,12 @@ export default function CadastroPage() {
                   name="emergencyPhone"
                   control={control}
                   render={({ field }) => (
-                    <InputMask
+                    <input
                       {...field}
-                      mask="phone"
+                      type="text"
                       placeholder="(00) 00000-0000"
+                      maxLength={15}
+                      onChange={(e) => handlePhoneChange(e, field.onChange)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
                     />
                   )}
