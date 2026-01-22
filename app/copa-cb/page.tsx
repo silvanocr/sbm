@@ -5,20 +5,28 @@ import YouTubeSection from '@/components/YouTubeSection'
 import { Calendar } from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function CopaCBPage() {
   let news = []
-  try {
-    news = await prisma.news.findMany({
-      where: {
-        published: true,
-        category: 'copa-cb',
-      },
-      orderBy: { publishedAt: 'desc' },
-      take: 6,
-    })
-  } catch (error) {
-    console.error('Erro ao buscar notícias:', error)
+  
+  // Só tenta buscar do banco se DATABASE_URL estiver disponível
+  if (process.env.DATABASE_URL) {
+    try {
+      news = await prisma.news.findMany({
+        where: {
+          published: true,
+          category: 'copa-cb',
+        },
+        orderBy: { publishedAt: 'desc' },
+        take: 6,
+      })
+    } catch (error) {
+      // Silenciosamente ignora erros durante build
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Erro ao buscar notícias:', error)
+      }
+    }
   }
 
   return (
