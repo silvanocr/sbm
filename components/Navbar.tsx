@@ -32,6 +32,15 @@ export default function Navbar() {
             <Link href="/transmissoes" className="hover:text-brand-yellow transition">
               Transmissões
             </Link>
+            <Link href="/copa-cb" className="hover:text-brand-yellow transition">
+              Copa CB
+            </Link>
+            <Link href="/campeonato-gaucho" className="hover:text-brand-yellow transition">
+              Campeonato Gaúcho
+            </Link>
+            <Link href="/contato" className="hover:text-brand-yellow transition">
+              Contato
+            </Link>
             {session ? (
               <>
                 <Link href="/piloto" className="hover:text-brand-yellow transition flex items-center gap-2">
@@ -76,6 +85,15 @@ export default function Navbar() {
             </Link>
             <Link href="/transmissoes" className="block hover:text-brand-yellow transition">
               Transmissões
+            </Link>
+            <Link href="/copa-cb" className="block hover:text-brand-yellow transition">
+              Copa CB
+            </Link>
+            <Link href="/campeonato-gaucho" className="block hover:text-brand-yellow transition">
+              Campeonato Gaúcho
+            </Link>
+            <Link href="/contato" className="block hover:text-brand-yellow transition">
+              Contato
             </Link>
             {session ? (
               <>

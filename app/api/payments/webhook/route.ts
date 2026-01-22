@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
 import { prisma } from '@/lib/prisma'
+import { sendEventConfirmationEmail } from '@/lib/email'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
   apiVersion: '2023-10-16',
@@ -37,7 +38,7 @@ export async function POST(request: Request) {
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session
 
-    const { enrollmentId, orderId, type } = session.metadata || {}
+    const { enrollmentId, orderId, eventId, userId, type } = session.metadata || {}
 
     if (type === 'enrollment' && enrollmentId) {
       await prisma.enrollment.update({
@@ -57,6 +58,52 @@ export async function POST(request: Request) {
           receiptUrl: (session as any).receipt_url || null,
         },
       })
+    } else if (type === 'event_registration' && eventId && userId) {
+      const registration = await prisma.eventRegistration.findFirst({
+        where: {
+          userId,
+          eventId,
+          status: 'pending',
+        },
+        include: {
+          event: true,
+          user: true,
+        },
+      })
+
+      if (registration) {
+        await prisma.eventRegistration.update({
+          where: { id: registration.id },
+          data: {
+            status: 'paid',
+            paymentId: session.payment_intent as string,
+            receiptUrl: (session as any).receipt_url || null,
+            totalPaid: registration.event.price,
+          },
+        })
+
+        // Atualizar contador de participantes
+        await prisma.event.update({
+          where: { id: eventId },
+          data: {
+            currentParticipants: {
+              increment: 1,
+            },
+          },
+        })
+
+        // Enviar email de confirmação
+        if (registration.user.email) {
+          await sendEventConfirmationEmail({
+            to: registration.user.email,
+            userName: registration.user.name,
+            eventName: registration.event.name,
+            eventDate: registration.event.eventDate,
+            amount: registration.event.price,
+            receiptUrl: (session as any).receipt_url || null,
+          })
+        }
+      }
     }
   }
 

@@ -18,10 +18,14 @@ model User {
   cpf           String?   @unique
   phone         String?
   licenseNumber String?
+  photo         String?   // URL da foto do piloto
+  role          String    @default("pilot") // "admin" ou "pilot"
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   enrollments   Enrollment[]
   orders        Order[]
+  eventRegistrations EventRegistration[]
+  messages      Message[]
 }
 
 model Enrollment {
@@ -82,11 +86,13 @@ model News {
   title       String
   content     String
   image       String?
-  author      String?
-  published   Boolean  @default(false)
-  publishedAt DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  author       String?
+  published    Boolean  @default(false)
+  publishedAt  DateTime?
+  category     String   @default("sbm") // "sbm", "copa-cb", "campeonato-gaucho"
+  featured     Boolean  @default(false) // Destaque na home
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model InstagramPost {
@@ -97,4 +103,78 @@ model InstagramPost {
   permalink   String
   timestamp   DateTime
   createdAt   DateTime @default(now())
+}
+
+model Event {
+  id              String   @id @default(cuid())
+  name            String
+  description     String?
+  eventDate       DateTime
+  registrationDeadline DateTime
+  price           Float
+  maxParticipants Int?
+  currentParticipants Int @default(0)
+  location        String?
+  category        String   @default("sbm") // "sbm", "copa-cb", "campeonato-gaucho"
+  active          Boolean  @default(true)
+  image           String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  registrations   EventRegistration[]
+}
+
+model EventRegistration {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  eventId     String
+  event       Event    @relation(fields: [eventId], references: [id])
+  status      String   @default("pending") // pending, paid, cancelled, completed
+  paymentId   String?
+  receiptUrl  String?
+  paymentMethod String? // "pix", "credit_card"
+  installments  Int?   @default(1)
+  totalPaid   Float    @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Banner {
+  id          String   @id @default(cuid())
+  title       String?
+  imageUrl    String
+  link        String?
+  position    String   // "home-hero", "home-top", "home-bottom", etc
+  active      Boolean  @default(true)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Message {
+  id          String   @id @default(cuid())
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id])
+  name        String
+  email       String
+  subject     String
+  message     String
+  read        Boolean  @default(false)
+  replied     Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PaymentConfig {
+  id                    String   @id @default(cuid())
+  stripePublicKey       String?
+  stripeSecretKey       String?
+  stripeWebhookSecret   String?
+  pixEnabled            Boolean  @default(true)
+  creditCardEnabled     Boolean  @default(true)
+  maxInstallments       Int      @default(12)
+  installmentsWithoutInterest Int @default(3) // Parcelas sem juros
+  interestRate          Float    @default(0.02) // Taxa de juros por parcela (2%)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
 }

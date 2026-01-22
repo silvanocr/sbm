@@ -1,20 +1,38 @@
 import Link from 'next/link'
 import { format } from 'date-fns'
+import { prisma } from '@/lib/prisma'
 
-async function getNews() {
+interface NewsItem {
+  id: string
+  title: string
+  content: string
+  image?: string | null
+  publishedAt?: Date | null
+}
+
+interface NewsSectionProps {
+  news?: NewsItem[]
+  category?: string
+}
+
+async function getNews(category?: string) {
   try {
-    const res = await fetch(`${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/news`, {
-      cache: 'no-store',
+    const news = await prisma.news.findMany({
+      where: {
+        published: true,
+        ...(category && { category }),
+      },
+      orderBy: { publishedAt: 'desc' },
+      take: 6,
     })
-    if (!res.ok) return []
-    return res.json()
+    return news
   } catch {
     return []
   }
 }
 
-export default async function NewsSection() {
-  const news = await getNews()
+export default async function NewsSection({ news: providedNews, category }: NewsSectionProps = {}) {
+  const news = providedNews || await getNews(category)
 
   return (
     <section className="py-12 bg-gray-50">
