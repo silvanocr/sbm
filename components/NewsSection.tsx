@@ -33,7 +33,18 @@ async function getNews(category?: string) {
 }
 
 export default async function NewsSection({ news: providedNews, category }: NewsSectionProps = {}) {
-  const news = providedNews || await getNews(category)
+  let news: NewsItem[] = []
+  
+  if (providedNews) {
+    news = providedNews
+  } else {
+    try {
+      news = await getNews(category)
+    } catch (error) {
+      console.error('Erro ao buscar notícias:', error)
+      news = []
+    }
+  }
 
   return (
     <section className="py-12 bg-gray-50">

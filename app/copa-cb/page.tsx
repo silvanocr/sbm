@@ -5,14 +5,19 @@ import YouTubeSection from '@/components/YouTubeSection'
 import { Calendar } from 'lucide-react'
 
 export default async function CopaCBPage() {
-  const news = await prisma.news.findMany({
-    where: {
-      published: true,
-      category: 'copa-cb',
-    },
-    orderBy: { publishedAt: 'desc' },
-    take: 6,
-  })
+  let news = []
+  try {
+    news = await prisma.news.findMany({
+      where: {
+        published: true,
+        category: 'copa-cb',
+      },
+      orderBy: { publishedAt: 'desc' },
+      take: 6,
+    })
+  } catch (error) {
+    console.error('Erro ao buscar notícias:', error)
+  }
 
   return (
     <div>
