@@ -173,7 +173,7 @@ export default function CadastroPage() {
                 <input
                   {...register('name')}
                   type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
                 {errors.name && (
                   <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
@@ -187,7 +187,7 @@ export default function CadastroPage() {
                 <input
                   {...register('email')}
                   type="email"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
                 {errors.email && (
                   <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
@@ -208,7 +208,7 @@ export default function CadastroPage() {
                       placeholder="000.000.000-00"
                       maxLength={14}
                       onChange={(e) => handleCPFChange(e, field.onChange)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                     />
                   )}
                 />
@@ -228,7 +228,7 @@ export default function CadastroPage() {
                       placeholder="(00) 00000-0000"
                       maxLength={15}
                       onChange={(e) => handlePhoneChange(e, field.onChange)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                     />
                   )}
                 />
@@ -241,7 +241,7 @@ export default function CadastroPage() {
                 <input
                   {...register('dateOfBirth')}
                   type="date"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
               </div>
 
@@ -252,7 +252,7 @@ export default function CadastroPage() {
                 <input
                   {...register('licenseNumber')}
                   type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
               </div>
 
@@ -263,7 +263,7 @@ export default function CadastroPage() {
                 <input
                   {...register('password')}
                   type="password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
                 {errors.password && (
                   <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
@@ -277,7 +277,7 @@ export default function CadastroPage() {
                 <input
                   {...register('confirmPassword')}
                   type="password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
                 {errors.confirmPassword && (
                   <p className="mt-1 text-sm text-red-600">{errors.confirmPassword.message}</p>
@@ -308,7 +308,7 @@ export default function CadastroPage() {
                         maxLength={9}
                         onChange={(e) => handleCEPChange(e, field.onChange)}
                         onBlur={handleCEPBlur}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                       />
                       {loadingCEP && (
                         <div className="absolute right-3 top-2.5">
@@ -329,7 +329,7 @@ export default function CadastroPage() {
                   {...register('address')}
                   type="text"
                   placeholder="Rua, número, complemento"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
               </div>
 
@@ -340,7 +340,7 @@ export default function CadastroPage() {
                 <input
                   {...register('city')}
                   type="text"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
               </div>
 
@@ -373,7 +373,7 @@ export default function CadastroPage() {
                   {...register('healthInsurance')}
                   type="text"
                   placeholder="Nome do plano de saúde"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
               </div>
 
@@ -383,7 +383,7 @@ export default function CadastroPage() {
                 </label>
                 <select
                   {...register('bloodType')}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 >
                   <option value="">Selecione...</option>
                   <option value="A+">A+</option>
@@ -413,7 +413,7 @@ export default function CadastroPage() {
                   {...register('emergencyContact')}
                   type="text"
                   placeholder="Nome completo do contato"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                 />
               </div>
 
@@ -431,7 +431,7 @@ export default function CadastroPage() {
                       placeholder="(00) 00000-0000"
                       maxLength={15}
                       onChange={(e) => handlePhoneChange(e, field.onChange)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow text-gray-900"
                     />
                   )}
                 />
