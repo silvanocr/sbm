@@ -1,6 +1,7 @@
 import { requireAdmin } from '@/lib/admin-auth'
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Plus, Edit, Package } from 'lucide-react'
 
 export default async function AdminProdutosPage() {
