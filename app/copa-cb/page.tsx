@@ -8,9 +8,17 @@ import { unstable_noStore as noStore } from 'next/cache'
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
+interface NewsItem {
+  id: string
+  title: string
+  content: string
+  image?: string | null
+  publishedAt?: Date | null
+}
+
 export default async function CopaCBPage() {
   noStore()
-  let news = []
+  let news: NewsItem[] = []
   
   // Só tenta buscar do banco se DATABASE_URL estiver disponível
   if (process.env.DATABASE_URL) {
