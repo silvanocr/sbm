@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 
 async function getNewsItem(id: string) {
   try {
@@ -27,10 +28,11 @@ export default async function NewsItemPage({
       <article>
         {news.image && (
           <div className="relative w-full h-96 mb-8 rounded-lg overflow-hidden">
-            <img
+            <Image
               src={news.image}
               alt={news.title}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           </div>
         )}

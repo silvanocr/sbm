@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { format } from 'date-fns'
 
 async function getNews() {
@@ -28,10 +29,11 @@ export default async function NoticiasPage() {
           >
             {item.image && (
               <div className="relative w-full h-48">
-                <img
+                <Image
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
               </div>
             )}

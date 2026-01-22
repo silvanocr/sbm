@@ -5,7 +5,7 @@ import {
   Users, 
   Calendar, 
   Package, 
-  Image, 
+  Image as ImageIcon, 
   FileText, 
   Settings,
   CreditCard,
@@ -69,7 +69,7 @@ export default async function AdminLayout({
               href="/admin/banners" 
               className="flex items-center gap-3 px-6 py-3 hover:bg-gray-800 transition"
             >
-              <Image className="w-5 h-5" />
+              <ImageIcon className="w-5 h-5" />
               Banners
             </Link>
             
