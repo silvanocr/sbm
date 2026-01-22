@@ -14,7 +14,9 @@ export default function Navbar() {
     <nav className="bg-brand-black text-white shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          <Logo />
+          <div className="flex-shrink-0">
+            <Logo />
+          </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
