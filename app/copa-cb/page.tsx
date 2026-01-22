@@ -4,6 +4,8 @@ import InstagramFeed from '@/components/InstagramFeed'
 import YouTubeSection from '@/components/YouTubeSection'
 import { Calendar } from 'lucide-react'
 
+export const dynamic = 'force-dynamic'
+
 export default async function CopaCBPage() {
   let news = []
   try {
