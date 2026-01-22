@@ -353,7 +353,7 @@ export default function CadastroPage() {
                   type="text"
                   maxLength={2}
                   placeholder="UF"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow uppercase"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-brand-yellow focus:border-brand-yellow uppercase text-gray-900"
                 />
               </div>
             </div>
