@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Play, Youtube } from 'lucide-react'
 
 interface YouTubeVideo {
@@ -49,10 +50,11 @@ export default function TransmissoesPage() {
             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition"
           >
             <div className="relative w-full h-48">
-              <img
+              <Image
                 src={video.thumbnail}
                 alt={video.title}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 hover:bg-opacity-40 transition">
                 <Play className="w-12 h-12 text-white" />

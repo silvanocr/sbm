@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { format } from 'date-fns'
 import { prisma } from '@/lib/prisma'
 
@@ -51,11 +52,14 @@ export default async function NewsSection({ news: providedNews, category }: News
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition"
             >
               {item.image && (
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-48 object-cover"
-                />
+                <div className="relative w-full h-48">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               )}
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">{item.title}</h3>

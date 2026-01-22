@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { Instagram, Play } from 'lucide-react'
 
 interface InstagramPost {
@@ -75,10 +76,11 @@ export default function InstagramFeed() {
                   rel="noopener noreferrer"
                   className="relative aspect-square rounded-lg overflow-hidden hover:opacity-80 transition"
                 >
-                  <img
+                  <Image
                     src={post.imageUrl}
                     alt={post.caption || 'Instagram post'}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </a>
               ))}
