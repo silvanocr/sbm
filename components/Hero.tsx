@@ -1,9 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
-
 export default function Hero() {
   return (
     <section className="relative bg-gradient-to-br from-brand-black via-gray-900 to-brand-black text-white py-20">

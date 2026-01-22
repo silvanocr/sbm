@@ -7,17 +7,17 @@ export default function Logo() {
       {/* Logo Text */}
       <div className="relative">
         {/* Yellow background bars */}
-        <div className="absolute -top-1 -left-2 -right-2 h-8 bg-yellow-500 rounded-sm transform -skew-x-12 opacity-90 group-hover:opacity-100 transition-opacity" />
-        <div className="absolute top-6 -left-1 -right-1 h-12 bg-yellow-500 rounded-sm transform -skew-x-12 opacity-90 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute -top-1 -left-2 -right-2 h-8 bg-brand-yellow rounded-sm transform -skew-x-12 opacity-90 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute top-6 -left-1 -right-1 h-12 bg-brand-yellow rounded-sm transform -skew-x-12 opacity-90 group-hover:opacity-100 transition-opacity" />
         
         {/* Text */}
         <div className="relative z-10">
           <div className="flex items-baseline gap-1">
-            <span className="text-sm font-bold text-black uppercase tracking-tight">SUL BRASILEIRO</span>
-            <span className="text-xs font-bold text-black uppercase">DE</span>
+            <span className="text-sm font-bold text-white uppercase tracking-tight">SUL BRASILEIRO</span>
+            <span className="text-xs font-bold text-white uppercase">DE</span>
           </div>
           <div className="mt-0.5">
-            <span className="text-2xl md:text-3xl font-black text-black uppercase italic transform -skew-x-12 tracking-tight">
+            <span className="text-2xl md:text-3xl font-black text-white uppercase italic transform -skew-x-12 tracking-tight">
               MOTOVELOCIDADE
             </span>
           </div>

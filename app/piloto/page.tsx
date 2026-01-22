@@ -82,10 +82,10 @@ export default function PilotoPage() {
           href="/piloto/perfil"
           className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition"
         >
-          <User className="w-8 h-8 text-primary-600 mb-4" />
+          <User className="w-8 h-8 text-brand-yellow mb-4" />
           <h3 className="text-xl font-semibold mb-2">Meu Perfil</h3>
           <p className="text-gray-600 mb-2">Editar informações</p>
-          <p className="text-primary-600 font-semibold">Editar →</p>
+          <p className="text-brand-yellow font-semibold">Editar →</p>
         </Link>
       </div>
 
