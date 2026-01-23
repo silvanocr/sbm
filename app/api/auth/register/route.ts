@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 import { z } from 'zod'
+import { Prisma } from '@prisma/client'
 
 const registerSchema = z.object({
   name: z.string().min(3),
@@ -70,6 +71,28 @@ export async function POST(request: Request) {
         { status: 400 }
       )
     }
+
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      if (error.code === 'P2002') {
+        const target = Array.isArray(error.meta?.target) ? error.meta?.target : []
+        if (target.includes('email')) {
+          return NextResponse.json({ error: 'Email já cadastrado' }, { status: 409 })
+        }
+        if (target.includes('cpf')) {
+          return NextResponse.json({ error: 'CPF já cadastrado' }, { status: 409 })
+        }
+        return NextResponse.json({ error: 'Dados já cadastrados' }, { status: 409 })
+      }
+
+      if (error.code === 'P2021' || error.code === 'P2022') {
+        return NextResponse.json(
+          { error: 'Banco de dados desatualizado. Execute as migrações.' },
+          { status: 500 }
+        )
+      }
+    }
+
+    console.error('Erro ao criar usuário:', error)
 
     return NextResponse.json(
       { error: 'Erro ao criar usuário' },
